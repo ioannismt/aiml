@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+<!-- basic_chat.aiml -->
+  <category>
+      <pattern><set>greetings</set></pattern>
+      <template>Hi, how can I help you?</template>
+  </category>
+
+  <category>
+      <pattern>I would like to know some information about my flight</pattern>
+      <template>
+          What information would you like to know?<star/>
+      </template>
+  </category>
+  
+  <category>
+      <pattern></pattern>
+      <template>
+          Sorry, but I canot understand, is there any way we could help you?<star/>
+      </template>
+  </category> 
+
+  <category>
+      <pattern>I would like to be informed about the registration and the verification authentication process of the account for the flight company</pattern>
+      <template>
+          Would you like to register for a new account or verify authentication?<star/>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>I want to know more information about the flight</pattern>
+      <template>
+          You can find more information about your flight in the provided link Do you have any more questions?<star/>
+        <link>
+            <text>Flight information</text>
+            <url>https://help.skyscanner.net/hc/en-gb</url>
+        </link>  
+        <button>
+            <text>No, the information was hepful</text>
+            <postback>No, The information was helpful</postback>
+        </button>
+        
+        <button>
+            <text>The provided link did not help me</text>
+            <postback>The provided link did not help me</postback>
+        </button>
+      </template>
+  </category>
+  
+  
+  <category>
+      <pattern>I want to know when the flight departure time is</pattern>
+      <template>
+          <srai>I want to know more information about the flight<star/> </srai>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>* flight *</pattern>
+      <template>
+          <srai>I want to know more information about the flight<star/> </srai>
+      </template>
+  </category>
+  
+  <category>
+      <pattern> I would like to know about the flight *</pattern>
+      <template>
+          <srai>I want to know more information about the flight</srai>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>Who account is having problem</pattern>
+      <template>
+          The account that is having problem is 
+      </template>
+  </category>
+  
+  <category>
+      <pattern>What * </pattern>
+      <template>
+          <srai> What account is having problem </srai>
+      </template>
+  </category>
+  
+  <categrory>
+      <pattern>How *</pattern>
+      <template>
+          <srai> What account is having problem <star/> </srai>
+      </template>
+  </categrory>
+  
+  <category>
+      <pattern>MY NAME IS *</pattern>
+      <template>Nice to meet you, <set name="name"><star /></set></template>
+  </category>
+  
+  <category>
+      <pattern>Bye</pattern>
+      <template>Good bye <get name="name" />.</template>
+  </category>
+  
+  <category>
+      <pattern>What is a chatbot</pattern>
+      <template>
+          A chatbot is a computer program designed to repond to text or voice inputs in natural language.
+      </template>
+  </category>
+
+  
+  <category>
+      <pattern> I want to know about * </pattern>
+      <template>
+        Below are some information about <set name="nameInfo"> <star/> </set>
+      <link>
+        <text>Flight details</text>
+        <url>https://help.skyscanner.net/hc/en-gb</url>
+      </link>
+      </template>
+  </category>
+  
+  <category>
+      <pattern> Please provide * </pattern>
+      <template>
+          Here are flight details: <get name="nameInfo"/>
+      <link>
+        <text>Flight details</text>
+        <url>https://help.skyscanner.net/hc/en-gb</url>
+      </link>
+      </template>
+  </category>
+  
+  
+  
+  <category>
+      <pattern>Registration ^</pattern>
+      <that>Would you like to register for a new account or verify authentication?</that>
+      <template>You can proceed with the registration in the provided link. Do you have any more questions?</template>
+      <link>
+          <text>registration</text>
+          <url>https://www.skyscanner.net/account/login</url>
+      </link>  
+  </category>
+  
+  <category>
+      <pattern>Authentication verification ^</pattern>
+      <that>Would you like to register for a new account or verify authentication?</that>
+      <template>You can proceed with the authentication verification following the details in the provided link. Do you have any more questions?</template>
+      <link>
+          <text>account verification</text>
+          <url>https://help.skyscanner.net/hc/en-gb/articles/18191454525969-How-do-I-change-my-password.</url>
+      </link>  
+  </category>
+  
+  <category>
+      <pattern>YES ^</pattern>
+      <that> You can proceed with the registration in the provided link. Do you have any more questions? </that>
+      <link>
+          <text>registration</text>
+          <url>https://www.skyscanner.net/account/login</url>
+      </link>
+      <template>For more information please contact the customer support of Skyscanner in the provided link </template>
+  </category>
+  
+  <category>
+      <pattern>YES ^</pattern>
+      <that>You can proceed with the verification authentication as described in the provided link. Do you have any more questions?</that>
+      <link>
+          <text>account verification</text>
+          <url>https://help.skyscanner.net/hc/en-gb/articles/18191454525969-How-do-I-change-my-password.</url>
+      </link>
+      <template>For more information please contact the customer support of Skyscanner in the provided link</template>
+  </category>
+  
+  <category>
+      <pattern>NO ^</pattern>
+      <that> You can proceed with the registration in the provided link. Do you have any more questions? </that>
+      <link>
+          <text>registration</text>
+          <url>https://www.skyscanner.net/account/login</url>
+      </link>
+      <template>Thank you, we are always at your disposal for help</template>
+  </category>
+  
+  <category>
+      <pattern>NO ^</pattern>
+      <that>You can proceed with the account verification in the provided link. Do you have any more questions?</that>
+      <link>
+          <text>account verification details</text>
+          <url>https://help.skyscanner.net/hc/en-gb/articles/18191454525969-How-do-I-change-my-password</url>
+      </link>
+      <template>Thank you, we are always at your disposal for help</template>
+  </category>
+  
+  
+  <category>
+      <pattern>I would like to be informed about the registration and the verification authentication process of the account for the flight company</pattern>
+      <template>
+      Would you like to register for a new account or verify authentication?
+          <button>
+            <text>Registration</text>
+            <postback>Registration</postback>
+          </button>
+        
+          <button>
+            <text>Authentication verification</text>
+            <postback>Authentication verification</postback>
+          </button>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>I want to know more information about my flight</pattern>
+      <template>
+          What information would you like to know?
+          <think><set name="topic">FLIGHT</set></think>
+      </template>
+  </category>
+
+  <category>
+      <pattern> What is your name</pattern>
+      <template>
+          I am <bot name="name"/>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>I need my flight information</pattern>
+      <template>
+        You can view the flight infromation in the link: <bot name="flight"/>
+      <link>
+          <text>Flight information</text>
+          <url>"https://help.skyscanner.net/hc/en-gb</url>
+      </link>
+      </template>
+  </category>
+  
+  <category>
+      <pattern> ^ information ^</pattern>
+      <template>
+        Details: <bot name="information"/>
+      </template>
+  </category>
+ 
+  <category>
+      <pattern>* <set>intents</set></pattern>
+      <template> Are you interested for this <star index="1"/> with this <star index="2"/> and <star index="3"/> </template>
+  </category>
+  
+  <category>
+      <pattern>The link to show flight *</pattern>
+      <template>
+          <map name="account"><star /></map>  <star/>
+      </template>
+  </category>
+  
+  
+  <category>
+      <pattern>The link to verify authentication *</pattern>
+      <template>
+          <map name="password"><star /></map> You can proceed with the registration in the provided link<star/>
+          <url>https://help.skyscanner.net/hc/en-gb</url>
+      </template>
+  </category>
+  
+  <category>
+      <pattern><set>greetings</set></pattern>
+      <template>Hi, how can I help you?</template>
+  </category>
+  
+  <category>
+      <pattern>* <set>intents</set></pattern>
+      <template>
+          <map name="answers"><star index="1"/></map>
+      </template>
+  </category>
+
+  
+  <category>
+    <pattern>You can find more information about your flight in the provided link. Do you have any more questions?<set>intents</set></pattern>
+    <template>
+        <button>
+            <text>No, the information was hepful</text>
+            <postback>No, The information was helpful</postback>
+        </button>
+        
+        <button>
+            <text>The provided link did not help me</text>
+            <postback>The provided link did not help me</postback>
+        </button>
+    </template>
+  </category>
+  
+  <category>
+      <pattern>No, the information was helpful</pattern>
+      <template>Thank you, we are always at your disposal to help</template>
+  </category>
+  
+    <category>
+      <pattern>The provided link did not help me</pattern>
+      <template>
+          For more information please tap in the link to contact the customer support of Skysanner
+          <link>
+              <text>Customer Support</text>
+              <url>https://www.skyscanner.com/tips-and-inspiration/airline-travel-agent-phone-numbers</url>
+          </link>
+      </template>
+  </category>
+  
+  
+  <category>
+      <pattern>No, the information was helpful</pattern>
+      <template>Thank you, we are always at your disposal to help</template>
+  </category>
+  
+  <category>
+      <pattern>Registration</pattern>
+      <template>
+      You can proceed with the registration in the provided link. Do you have any more questions?
+        <link>
+            <text>Registration</text>
+            <url>https://www.skyscanner.net/account/login</url>
+        </link>
+        <button>
+            <text>No</text>
+            <postback>No</postback>
+        </button>
+        
+        <button>
+            <text>Yes</text>
+            <postback>Yes</postback>
+        </button>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>Authentication verification</pattern>
+      <template>
+      You can proceed with the verification authentication as described in the provided link
+        <link>
+            <text>Authentication verification</text>
+            <url>https://help.skyscanner.net/hc/en-gb/articles/18191454525969-How-do-I-change-my-password. Do you have any more questions?</url>
+        </link>
+        <button>
+            <text>No</text>
+            <postback>No</postback>
+        </button>
+        
+        <button>
+            <text>Yes</text>
+            <postback>Yes</postback>
+        </button>
+      </template>
+  </category>
+
+  <category>
+      <pattern>No</pattern>
+      <template>Thank you, we are always at your disposal for help</template>
+  </category>
+  
+  <category>
+      <pattern>Yes</pattern>
+      <template>
+          For more information please contact the customer support of Skyscanner in the provided link
+          <link>
+            <text>Customer Support</text>
+            <url>https://www.skyscanner.com/tips-and-inspiration/airline-travel-agent-phone-numbers</url>
+          </link>
+      </template>
+  </category>
+
+  <category>
+      <pattern>You can proceed with the registration in the provided link. Do you have any more questions?</pattern>
+      <template>
+          <reply>
+          <text>Yes</text>
+          <postback>repyes</postback>
+          </reply>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>repyes</pattern>
+      <template>
+          For more information please contact the customer support of Skyscanner in the provided link
+          <link>
+              <text>Customer Support</text>
+              <url>https://www.skyscanner.com/tips-and-inspiration/airline-travel-agent-phone-numbers</url>
+          </link>
+      </template>
+  </category>
+  
+    <category>
+      <pattern>You can proceed with with registration in the provided link. Do you have any more questions?</pattern>
+      <template>
+          <reply>
+          <text>No</text>
+          <postback>repno</postback>
+          </reply>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>repno</pattern>
+      <template>Thank you, we are always at your disposal for help</template>
+  </category>
+
+
+  <category>
+      <pattern>*</pattern>
+      <template>
+          Sorry, but I cannot understand, is there any way we could help you?<br></br>
+      </template>
+  </category>
+
+
+  <category>
+      <pattern>Yes please</pattern>
+      <template>
+          Okay, please tell me what would you like to know?
+      </template>
+  </category>
+  
+    <category>
+      <pattern>No thanks</pattern>
+      <template>
+          Thank you, we are always at your disposal for help. For an information please contact customer support of Skyscanner in the provided link
+          <link>
+              <text>Customer Support</text>
+              <url>https://www.skyscanner.com/tips-and-inspiration/airline-travel-agent-phone-numbers</url>
+          </link>
+      </template>
+  </category>
+
+  <category>
+      <pattern>Sorry, but I canot understand, is there any way we could help you?</pattern>
+      <template>
+          <reply>
+          <text>Yes please</text>
+          <postback>repyes</postback>
+          </reply>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>repyes</pattern>
+      <template>Okay, please tell me what would you like to know</template>
+  </category>
+  
+  <category>
+      <pattern></pattern>
+      <template>
+          <reply>
+          <text>No thanks</text>
+          <postback>repno</postback>
+          </reply>
+      </template>
+  </category>
+  
+  <category>
+      <pattern>repno</pattern>
+      <template>Thank you, we are always at your disposal for help. For an information please contact customer support of Skyscanner in the provided link </template>
+  </category>
+  
+  
+  <category>
+      <pattern> BYE </pattern>
+      <template> Goodbye </template>
+  </category>
+  
+  <category>
+      <pattern>I want some details about my flight</pattern>
+      <template>
+        <sentence>Do<person><input/></person>?</sentence>
+        <button>
+            <text>No</text>
+            <postback>No</postback>
+        </button>
+        
+        <button>
+            <text>Yes</text>
+            <postback>Yes</postback>
+        </button>
+      </template>
+  </category>
+  
+  <category>
+      <pattern> BYE * </pattern>
+      <template> <srai> BYE </srai> <sr/>!</template>
+  </category>
+  
+</aiml>

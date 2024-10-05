@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+	<!-- insert your AIML categories here -->
+	
+	  
+<topic name="FLIGHT">
+    <category>
+        <pattern>* flight *</pattern>
+        <template> More flight details can be provided in this link
+        <link>
+            <text>Flight details</text>
+            <url>https://help.skyscanner.net/hc/en-gb</url>
+        </link>
+        </template>
+    </category>
+</topic>
+
+<topic name="CUSTOMER">
+    <category>
+        <pattern>*</pattern>
+        <template> More details can be provided from the Customer supportils can be provided in this link</template>
+    </category>
+</topic>
+
+</aiml>
